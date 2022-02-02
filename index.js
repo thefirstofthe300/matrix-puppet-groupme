@@ -6,9 +6,9 @@ const {
   MatrixPuppetBridgeBase
 } = require("matrix-puppet-bridge");
 const GroupMeClient = require('./client');
-const config = require('./config.json');
+const config = require(process.env.CONFIG_PATH);
 const path = require('path');
-const puppet = new Puppet(path.join(__dirname, './config.json' ));
+const puppet = new Puppet(path.join(__dirname, process.env.CONFIG_PATH ));
 
 const debug = require('debug')('matrix-puppet:keepalive');
 const keepalive = ({ ping, reconnect }) => {
